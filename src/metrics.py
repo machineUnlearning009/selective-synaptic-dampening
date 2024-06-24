@@ -74,6 +74,9 @@ def get_membership_attack_prob(retain_loader, forget_loader, test_loader, model)
     X_f, Y_f, X_r, Y_r = get_membership_attack_data(
         retain_loader, forget_loader, test_loader, model
     )
+
+    ## I can try both of these - Bad teaching uses SVC
+    
     # clf = SVC(C=3,gamma='auto',kernel='rbf')
     clf = LogisticRegression(
         class_weight="balanced", solver="lbfgs", multi_class="multinomial"
