@@ -3,9 +3,6 @@
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/if-loops/selective-synaptic-dampening/main) ![GitHub Repo stars](https://img.shields.io/github/stars/if-loops/selective-synaptic-dampening) ![GitHub repo size](https://img.shields.io/github/repo-size/if-loops/selective-synaptic-dampening)
 
 
-![Visualization of the codebase](./diagram.svg)
-
-
 ![SSD_heading](https://github.com/if-loops/selective-synaptic-dampening/assets/47212405/2abb0ef1-8646-479e-a00e-613960d27f9c)
 
 This is the code for the paper **Fast Machine Unlearning Without Retraining Through Selective Synaptic Dampening** (https://arxiv.org/abs/2308.07707), accepted at The 38th Annual **AAAI Conference on Artificial Intelligence** (Main Track).

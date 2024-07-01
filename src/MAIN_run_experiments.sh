@@ -13,19 +13,19 @@ DEVICE=$1
 for value in {1..123}
 do  
     # ResNet18
-    ./cifar20_subclass_exps.sh $DEVICE $value
-    ./cifar10_random_exps.sh $DEVICE $value
-    ./cifar20_fullclass_exps.sh $DEVICE $value
-    ./cifar100_fullclass_exps.sh $DEVICE $value
+    ./class_unlearning/subclass/cifar20/cifar20_subclass_exps.sh $DEVICE $value
+    ./class_unlearning/random/cifar10/cifar10_random_exps.sh $DEVICE $value
+    ./class_unlearning/fullclass/cifar20/cifar20_fullclass_exps.sh $DEVICE $value
+    ./class_unlearning/fullclass/cifar100/cifar100_fullclass_exps.sh $DEVICE $value
 
      # Celebrity faces: www.kaggle.com/datasets/hereisburak/pins-face-recognition
-     ./pins_fullclass_exps.sh $DEVICE $value
+     ./class_unlearning/pins_fullclass_exps.sh $DEVICE $value
 
     # Vision Transformer
-    ./cifar10_random_exps_vit.sh $DEVICE $value
-    ./cifar100_fullclass_exps_vit.sh $DEVICE $value
-    ./cifar20_fullclass_exps_vit.sh $DEVICE $value
-    ./cifar20_subclass_exps_vit.sh $DEVICE $value
+    ./class_unlearning/random/cifar10/cifar10_random_exps_vit.sh $DEVICE $value
+    ./class_unlearning/fullclass/cifar100/cifar100_fullclass_exps_vit.sh $DEVICE $value
+    ./class_unlearning/fullclass/cifar20/cifar20_fullclass_exps_vit.sh $DEVICE $value
+    ./class_unlearning/subclass/cifar20/cifar20_subclass_exps_vit.sh $DEVICE $value
     
    
 done
