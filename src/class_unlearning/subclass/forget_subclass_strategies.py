@@ -16,10 +16,10 @@ from torch.utils.data import DataLoader, ConcatDataset, dataset
 from sklearn import linear_model, model_selection
 from tqdm import tqdm
 
-from unlearn import *
+from unlearning_methods.unlearn import *
 from metrics import UnLearningScore, get_membership_attack_prob
 from utils import *
-import ssd as ssd
+import unlearning_methods.ssd as ssd
 import conf
 
 

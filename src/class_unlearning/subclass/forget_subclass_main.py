@@ -24,7 +24,7 @@ import torchvision
 import torchvision.transforms as transforms
 
 import models
-from unlearn import *
+from unlearning_methods.unlearn import *
 from utils import *
 import src.class_unlearning.subclass.forget_subclass_strategies as forget_subclass_strategies
 import src.datasets.datasets as datasets
