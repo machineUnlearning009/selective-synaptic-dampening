@@ -3,6 +3,15 @@ From https://github.com/vikram2000b/bad-teaching-unlearning
 And https://github.com/weiaicunzai/pytorch-cifar100 (better performance) <- Refer to this for comments
 """
 
+
+###################
+### MODELS USED ###
+###################
+###  ResNet18   ###
+###   AllCNN    ###
+###    ViT      ###
+###################
+
 from torch import nn
 import numpy as np
 import torch
@@ -12,10 +21,16 @@ from resnet import ResNet, BasicBlock
 
 
 def ResNet18(num_classes):
+    """
+    Creates a ResNet18 model
+    """
     return ResNet(BasicBlock, [2, 2, 2, 2], num_classes=num_classes)
 
 
 class Identity(nn.Module):
+    """
+    A simple identity layer that returns the input unchanged
+    """
     def __init__(self):
         super(Identity, self).__init__()
 
@@ -24,6 +39,9 @@ class Identity(nn.Module):
 
 
 class Flatten(nn.Module):
+    """
+    A layer that flattens the input tensor
+    """
     def __init__(self):
         super(Flatten, self).__init__()
 
@@ -31,40 +49,46 @@ class Flatten(nn.Module):
         return x.view(x.size(0), -1)
 
 
-class ConvStandard(nn.Conv2d):
-    def __init__(
-        self,
-        in_channels,
-        out_channels,
-        kernel_size=3,
-        stride=1,
-        padding=None,
-        output_padding=0,
-        w_sig=np.sqrt(1.0),
-    ):
-        super(ConvStandard, self).__init__(in_channels, out_channels, kernel_size)
-        self.in_channels = in_channels
-        self.out_channels = out_channels
-        self.kernel_size = kernel_size
-        self.stride = stride
-        self.padding = padding
-        self.w_sig = w_sig
-        self.reset_parameters()
+# class ConvStandard(nn.Conv2d):
+#     """
+#     A custom convolutional layer that initializes weights with a normal distribution
+#     """
+#     def __init__(
+#         self,
+#         in_channels,
+#         out_channels,
+#         kernel_size=3,
+#         stride=1,
+#         padding=None,
+#         output_padding=0,
+#         w_sig=np.sqrt(1.0),
+#     ):
+#         super(ConvStandard, self).__init__(in_channels, out_channels, kernel_size)
+#         self.in_channels = in_channels
+#         self.out_channels = out_channels
+#         self.kernel_size = kernel_size
+#         self.stride = stride
+#         self.padding = padding
+#         self.w_sig = w_sig
+#         self.reset_parameters()
 
-    def reset_parameters(self):
-        torch.nn.init.normal_(
-            self.weight,
-            mean=0,
-            std=self.w_sig / (self.in_channels * np.prod(self.kernel_size)),
-        )
-        if self.bias is not None:
-            torch.nn.init.normal_(self.bias, mean=0, std=0)
+#     def reset_parameters(self):
+#         torch.nn.init.normal_(
+#             self.weight,
+#             mean=0,
+#             std=self.w_sig / (self.in_channels * np.prod(self.kernel_size)),
+#         )
+#         if self.bias is not None:
+#             torch.nn.init.normal_(self.bias, mean=0, std=0)
 
-    def forward(self, input):
-        return F.conv2d(input, self.weight, self.bias, self.stride, self.padding)
+#     def forward(self, input):
+#         return F.conv2d(input, self.weight, self.bias, self.stride, self.padding)
 
 
 class Conv(nn.Sequential):
+    """
+    A sequential model that can include convolutional layers, batch normalization, and activation functions, based on the specified parameters
+    """
     def __init__(
         self,
         in_channels,
@@ -112,6 +136,9 @@ class Conv(nn.Sequential):
 
 
 class AllCNN(nn.Module):
+    """
+    A custom CNN model that includes several convolutional layers, dropout, and an average pooling layer, followed by a fully connected classifier
+    """
     def __init__(
         self,
         filters_percentage=1.0,
@@ -162,12 +189,15 @@ class AllCNN(nn.Module):
 
 
 class ViT(nn.Module):
+    """
+    A pretrained ViT model followed by a fully connected layer for classification
+    """
     def __init__(self, num_classes=20, **kwargs):
         super(ViT, self).__init__()
         self.base = ViTModel.from_pretrained("google/vit-base-patch16-224")
         self.final = nn.Linear(self.base.config.hidden_size, num_classes)
         self.num_classes = num_classes
-        self.relu = nn.ReLU()
+        # self.relu = nn.ReLU()
 
     def forward(self, pixel_values):
         outputs = self.base(pixel_values=pixel_values)
