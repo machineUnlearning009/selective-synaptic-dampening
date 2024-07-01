@@ -11,7 +11,7 @@ import torch.optim as optim
 import torchvision
 import torchvision.transforms as transforms
 
-import datasets
+import src.datasets.datasets as datasets
 import models
 import conf
 from training_utils import *
@@ -114,7 +114,11 @@ if args.gpu:
     net = net.cuda()
 
 # dataloaders
-root = "105_classes_pins_dataset" if args.dataset == "PinsFaceRecognition" else "./data"
+root = (
+    "105_classes_pins_dataset"
+    if args.dataset == "PinsFaceRecognition"
+    else "./dataset/data"
+)
 img_size = 224 if args.net == "ViT" else 32
 
 trainset = getattr(datasets, args.dataset)(

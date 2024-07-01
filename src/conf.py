@@ -1,4 +1,4 @@
-""" 
+"""
 configurations for this project
 """
 

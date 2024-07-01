@@ -11,7 +11,7 @@ DEVICE=$1
 # TODO: Do not forget to set the paths to the model weights in the other bash files (e.g., cifar20_fullclass_exps.sh)
 # You might encounter issues with executing this file due to different line endings with Windows and Unix. Use dos2unix "filename" to fix.
 for value in {1..123}
-do  
+do
     # ResNet18
     ./class_unlearning/subclass/cifar20/cifar20_subclass_exps.sh $DEVICE $value
     ./class_unlearning/random/cifar10/cifar10_random_exps.sh $DEVICE $value
@@ -26,6 +26,6 @@ do
     ./class_unlearning/fullclass/cifar100/cifar100_fullclass_exps_vit.sh $DEVICE $value
     ./class_unlearning/fullclass/cifar20/cifar20_fullclass_exps_vit.sh $DEVICE $value
     ./class_unlearning/subclass/cifar20/cifar20_subclass_exps_vit.sh $DEVICE $value
-    
-   
+
+
 done

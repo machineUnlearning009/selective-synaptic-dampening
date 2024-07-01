@@ -2,7 +2,7 @@
 # We provide all of the individual bash files per task and model to make individual experiments easy to call.
 
 reset_cuda(){
-    sleep 10    
+    sleep 10
 }
 
 DEVICE=$1

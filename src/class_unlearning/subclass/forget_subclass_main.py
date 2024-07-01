@@ -26,8 +26,8 @@ import torchvision.transforms as transforms
 import models
 from unlearn import *
 from utils import *
-import forget_subclass_strategies
-import datasets
+import src.class_unlearning.subclass.forget_subclass_strategies as forget_subclass_strategies
+import src.datasets.datasets as datasets
 import models
 import conf
 from training_utils import *
@@ -113,7 +113,11 @@ if args.gpu:
     net = net.cuda()
     unlearning_teacher = unlearning_teacher.cuda()
 
-root = "105_classes_pins_dataset" if args.dataset == "PinsFaceRecognition" else "./data"
+root = (
+    "105_classes_pins_dataset"
+    if args.dataset == "PinsFaceRecognition"
+    else "./dataset/data"
+)
 
 img_size = 224 if args.net == "ViT" else 32
 trainset = getattr(datasets, args.dataset)(

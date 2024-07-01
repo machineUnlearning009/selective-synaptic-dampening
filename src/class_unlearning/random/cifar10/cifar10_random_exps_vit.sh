@@ -3,7 +3,7 @@
 
 # OOM prevention
 reset_cuda(){
-    sleep 10    
+    sleep 10
 }
 
 DEVICE=$1
@@ -20,15 +20,15 @@ weight_path= # Add the path to your ViT weights
 # Run the Python script
 CUDA_VISIBLE_DEVICES=$DEVICE python forget_random_main.py -net ViT -dataset $dataset -classes $n_classes -gpu -method blindspot -forget_perc $forget_perc -weight_path $weight_path -seed $seed
 reset_cuda
-CUDA_VISIBLE_DEVICES=$DEVICE python forget_random_main.py -net ViT -dataset $dataset -classes $n_classes -gpu -method baseline -forget_perc $forget_perc -weight_path $weight_path -seed $seed 
+CUDA_VISIBLE_DEVICES=$DEVICE python forget_random_main.py -net ViT -dataset $dataset -classes $n_classes -gpu -method baseline -forget_perc $forget_perc -weight_path $weight_path -seed $seed
 reset_cuda
-CUDA_VISIBLE_DEVICES=$DEVICE python forget_random_main.py -net ViT -dataset $dataset -classes $n_classes -gpu -method ssd_tuning -forget_perc $forget_perc -weight_path $weight_path -seed $seed 
+CUDA_VISIBLE_DEVICES=$DEVICE python forget_random_main.py -net ViT -dataset $dataset -classes $n_classes -gpu -method ssd_tuning -forget_perc $forget_perc -weight_path $weight_path -seed $seed
 reset_cuda
-CUDA_VISIBLE_DEVICES=$DEVICE python forget_random_main.py -net ViT -dataset $dataset -classes $n_classes -gpu -method finetune -forget_perc $forget_perc -weight_path $weight_path -seed $seed 
+CUDA_VISIBLE_DEVICES=$DEVICE python forget_random_main.py -net ViT -dataset $dataset -classes $n_classes -gpu -method finetune -forget_perc $forget_perc -weight_path $weight_path -seed $seed
 reset_cuda
-CUDA_VISIBLE_DEVICES=$DEVICE python forget_random_main.py -net ViT -dataset $dataset -classes $n_classes -gpu -method amnesiac -forget_perc $forget_perc -weight_path $weight_path -seed $seed 
+CUDA_VISIBLE_DEVICES=$DEVICE python forget_random_main.py -net ViT -dataset $dataset -classes $n_classes -gpu -method amnesiac -forget_perc $forget_perc -weight_path $weight_path -seed $seed
 reset_cuda
-CUDA_VISIBLE_DEVICES=$DEVICE python forget_random_main.py -net ViT -dataset $dataset -classes $n_classes -gpu -method UNSIR -forget_perc $forget_perc -weight_path $weight_path -seed $seed 
+CUDA_VISIBLE_DEVICES=$DEVICE python forget_random_main.py -net ViT -dataset $dataset -classes $n_classes -gpu -method UNSIR -forget_perc $forget_perc -weight_path $weight_path -seed $seed
 reset_cuda
-CUDA_VISIBLE_DEVICES=$DEVICE python forget_random_main.py -net ViT -dataset $dataset -classes $n_classes -gpu -method retrain -forget_perc $forget_perc -weight_path $weight_path -seed $seed 
+CUDA_VISIBLE_DEVICES=$DEVICE python forget_random_main.py -net ViT -dataset $dataset -classes $n_classes -gpu -method retrain -forget_perc $forget_perc -weight_path $weight_path -seed $seed
 reset_cuda

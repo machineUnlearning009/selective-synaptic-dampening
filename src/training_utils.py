@@ -5,10 +5,12 @@ author baiyu
 # https://github.com/weiaicunzai/pytorch-cifar100
 import os
 import re
+
 # import datetime
 
 # import numpy
 from torch.optim.lr_scheduler import _LRScheduler
+
 # import torchvision
 # import torchvision.transforms as transforms
 # from torch.utils.data import DataLoader
@@ -16,7 +18,7 @@ from torch.optim.lr_scheduler import _LRScheduler
 
 # def get_network(args):
 #     """return given network"""
-    
+
 #     if args.net == "resnet18":
 #         from models.resnet import resnet18
 
@@ -56,7 +58,7 @@ from torch.optim.lr_scheduler import _LRScheduler
 #     )
 #     # cifar100_training = CIFAR100Train(path, transform=transform_train)
 #     cifar100_training = torchvision.datasets.CIFAR100(
-#         root="./data", train=True, download=True, transform=transform_train
+#         root="./dataset/data", train=True, download=True, transform=transform_train
 #     )
 #     cifar100_training_loader = DataLoader(
 #         cifar100_training,
@@ -85,7 +87,7 @@ from torch.optim.lr_scheduler import _LRScheduler
 #     )
 #     # cifar100_test = CIFAR100Test(path, transform=transform_test)
 #     cifar100_test = torchvision.datasets.CIFAR100(
-#         root="./data", train=False, download=True, transform=transform_test
+#         root="./dataset/data", train=False, download=True, transform=transform_test
 #     )
 #     cifar100_test_loader = DataLoader(
 #         cifar100_test, shuffle=shuffle, num_workers=num_workers, batch_size=batch_size

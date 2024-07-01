@@ -31,6 +31,7 @@ class Identity(nn.Module):
     """
     A simple identity layer that returns the input unchanged
     """
+
     def __init__(self):
         super(Identity, self).__init__()
 
@@ -42,6 +43,7 @@ class Flatten(nn.Module):
     """
     A layer that flattens the input tensor
     """
+
     def __init__(self):
         super(Flatten, self).__init__()
 
@@ -89,6 +91,7 @@ class Conv(nn.Sequential):
     """
     A sequential model that can include convolutional layers, batch normalization, and activation functions, based on the specified parameters
     """
+
     def __init__(
         self,
         in_channels,
@@ -139,6 +142,7 @@ class AllCNN(nn.Module):
     """
     A custom CNN model that includes several convolutional layers, dropout, and an average pooling layer, followed by a fully connected classifier
     """
+
     def __init__(
         self,
         filters_percentage=1.0,
@@ -192,6 +196,7 @@ class ViT(nn.Module):
     """
     A pretrained ViT model followed by a fully connected layer for classification
     """
+
     def __init__(self, num_classes=20, **kwargs):
         super(ViT, self).__init__()
         self.base = ViTModel.from_pretrained("google/vit-base-patch16-224")
